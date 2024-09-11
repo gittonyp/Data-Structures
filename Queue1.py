@@ -1,4 +1,5 @@
 import os
+import pickle
 class Node(object):
     def __init__(self, value):
         self.value = value
@@ -53,6 +54,8 @@ class Q(object):
             return True
         else:
             return False
+    
+        
 
 def Queue11():
     print("Queue")
@@ -68,6 +71,8 @@ def Queue11():
 
 stop = 0
 ll = Q()
+with open(file="abc.pickle",mode="rb")as savefile1:
+    ll=pickle.load(savefile1)
 while stop == 0:
     Queue11()
     choice = int(input("Enter"))
@@ -95,6 +100,8 @@ while stop == 0:
         case 6:
             ll.print()
         case 7:
+            with open(file="abc.pickle",mode="wb")as savefile1:
+                pickle.dump(ll,savefile1)
             stop = 1
         case _:
             print("Enter Correcgt Value")
