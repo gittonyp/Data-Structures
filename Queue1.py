@@ -1,3 +1,4 @@
+import os
 class Node(object):
     def __init__(self, value):
         self.value = value
@@ -25,7 +26,7 @@ class Q(object):
             print("Queue is Empty")
             return
         else:
-            sizea-=1
+            self.sizea-=1
             self.head=self.head.next;
 
 
@@ -43,7 +44,7 @@ class Q(object):
     def isEmpty(self):
         if self.head==None:
             return True
-        else
+        else:
             return False
     def isFull(self):
         try:
@@ -70,11 +71,11 @@ ll = Q()
 while stop == 0:
     Queue11()
     choice = int(input("Enter"))
-    os.system('cls')
+    os.system('clear')
     match choice:
         case 1:
             Value = input("Enter Value: ")
-            ll.add(value)
+            ll.add(Value)
         case 2:
             ll.remove()
 
