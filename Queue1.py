@@ -7,10 +7,11 @@ class Node(object):
 
 
 class Q(object):
-    sizea=0
+    
     def __init__(self):
         self.head = None
         self.tail = None
+        self.sizea=0
     def add(self,value):
         self.sizea += 1
         if self.head is None:
@@ -19,6 +20,7 @@ class Q(object):
         else:
             self.tail.next = Node(value)
             self.tail = self.tail.next
+            self.tail.next=self.head
 
     def remove(self):
 
@@ -29,16 +31,20 @@ class Q(object):
         else:
             self.sizea-=1
             self.head=self.head.next;
+            self.tail.next=self.head
 
 
 
     def print(self):
         temp= self.head
-        while temp!=None:
+        for i in range(0,self.sizea):
             print(temp.value)
             temp = temp.next
 
     def top(self):
+        if self.head==None:
+            print("Empty Queue")
+            return
         print(self.head.value)
         return
 
