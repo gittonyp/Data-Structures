@@ -30,8 +30,11 @@ class Assign():
         self.usesr.enque(val);
     
     def remove(self):
-        self.usesr.deque()
-    
+        if ll.isempty==True:
+            self.usesr.deque()
+        else:
+            print("Queue is Empty")
+            
     def isempty(self):
         return self.usesr.isEmpty()
     
@@ -46,6 +49,10 @@ class Assign():
 
 stop = 0
 ll = Assign()
+with open(r"assign5dataq.pickle","rb") as file1:
+    ll=pickle.load(file1)
+    file1.close
+
 
 while stop == 0:
     printQueuemenu()

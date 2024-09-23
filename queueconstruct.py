@@ -27,11 +27,12 @@ class myQueue(object):
 
         
         if self.head==None:
-            print("Queue is Empty")
             return None
         else:
             self.sizea-=1
             temp=self.head
+            if self.head.next==None:
+                self.head=None
             self.head=self.head.next;
             self.tail.next=self.head
             return temp
@@ -40,7 +41,7 @@ class myQueue(object):
     def peek(self):
         if self.head==None:
             print("Empty Queue")
-            return
+            return -1
         return self.head
 
     def isEmpty(self):
