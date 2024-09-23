@@ -1,12 +1,13 @@
 import os
 import pickle
-class Node(object):
-    def __init__(self, value):
-        self.value = value
-        self.next = None
+class customer(object):
+    def __init__(self, n,i,s):
+        self.name=n;
+        self.id=i;
+        self.service=s;
 
 
-class Q(object):
+class Qea(object):
     
     def __init__(self):
         self.head = None
@@ -15,10 +16,10 @@ class Q(object):
     def add(self,value):
         self.sizea += 1
         if self.head is None:
-            self.head = Node(value)
+            self.head = value
             self.tail = self.head
         else:
-            self.tail.next = Node(value)
+            self.tail.next = value
             self.tail = self.tail.next
             self.tail.next=self.head
 
@@ -76,17 +77,19 @@ def Queue11():
 
 
 stop = 0
-ll = Q()
-with open(file="abc.pickle",mode="rb")as savefile1:
-    ll=pickle.load(savefile1)
+ll = Qea()
+
 while stop == 0:
     Queue11()
     choice = int(input("Enter"))
     os.system('clear')
     match choice:
         case 1:
-            Value = input("Enter Value: ")
-            ll.add(Value)
+            Value = input("Enter ID: ")
+            name=input("Enter Name")
+            ser=input("Enter Service")
+            Val=object(Value,name,ser)
+            ll.add(Val)
         case 2:
             ll.remove()
 
@@ -106,8 +109,7 @@ while stop == 0:
         case 6:
             ll.print()
         case 7:
-            with open(file="abc.pickle",mode="wb")as savefile1:
-                pickle.dump(ll,savefile1)
+            
             stop = 1
         case _:
             print("Enter Correcgt Value")
