@@ -63,7 +63,7 @@ class BST:
                 return root.left
             if root.right!=None:
                 return root.right
-            
+            root=None
             return None
         
     
