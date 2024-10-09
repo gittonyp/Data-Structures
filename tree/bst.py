@@ -48,23 +48,44 @@ class BST:
     
     def delete(self,data):
         temp=self.root
-        st=[]
-        if temp==None:
-            print("Empty Tree")
+        self.deleterecuse(data,temp)
+           
+    def deleterecuse(self,data,root):
+        if root==None:
+             return root
+        if data==root.data:
+            if root.left!=None and root.right!=None:
+                temp=self.find_pred(root.right)
+                temp.left=root.left
+                temp.right=root.right
+                return temp
+            if root.left!=None:
+                return root.left
+            if root.right!=None:
+                return root.right
+            
+            return None
+        
+    
+        if data>root.data:
+            temp=self.deleterecuse(data,root.right)
+            root.right=temp
         else:
-            st.append(self.root)
-            while temp!=None:
-                if temp.data==data and st.:
-                    print("Found Data")
-                    return
-                if temp.left!=None and data<temp.data:
-                    temp=temp.left
-                    continue
-                if temp.right!=None and data>temp.data:
-                    temp=temp.right
-                    continue
-                break
-        print("Data Not Found")
+            temp=self.deleterecuse(data,root.left)
+            root.left=temp
+        
+        return root
+            
+    def find_pred(self,root):
+        temp=root
+        t=None
+        while temp.left!=None:
+            t=temp
+            print(t.data)
+            temp=temp.left
+        t.left=None
+        return temp
+    
     
     def __proorderin(self,temp):
         if temp==None:
@@ -129,12 +150,27 @@ class BST:
 tree=BST()
 tree.insert(10)
 tree.insert(5)
-tree.insert(20)
-tree.insert(3)
-tree.insert(9)
+tree.insert(17)
+tree.insert(8)
 tree.insert(15)
+tree.insert(30)
+tree.insert(14)
+tree.insert(16)
 tree.insert(25)
+tree.insert(35)
 
 tree.preorder()
+print()
+
 tree.interpreorder()
 tree.preorder()
+print()
+
+tree.delete(17)
+print()
+tree.preorder()
+tree.interpreorder()
+print()
+
+tree.preorder()
+print()
