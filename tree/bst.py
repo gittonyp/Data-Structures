@@ -166,12 +166,19 @@ class BST:
             return None
         a=root.left.data
         b=root.right.data
+        a=Node(a)
+        b=Node(b)
+        copy1.left=a
+        copy1.right=b
         self.copy(root.left,copy1.left)
         self.copy(root.right,copy1.right)
-        copy1.left=Node(a)
-        copy1.right=Node(b)   
         return copy1
     
+    def selfcopy(self,root):
+        copy1=root.data
+        copy1=Node(copy1)
+        return self.copy(root,copy1)
+        
     
 tree=BST()
 tree.insert(10)
@@ -204,5 +211,5 @@ print(tree.hieght(tree.root))
 tree.mirro(tree.root)
 tree.preorder()
 b=Node(1)
-a=tree.copy(tree.root,b)
-print(a.data)
+a=tree.selfcopy(tree.root)
+tree.__proorderin(a)
