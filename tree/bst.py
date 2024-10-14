@@ -142,9 +142,35 @@ class BST:
                     st.append(temp.right)
                 if temp.left!=None:
                     st.append(temp.left)
-                
-                
+   
+    def mirro(self,root):
+        if root==None:
+            return
+        a=root.left
+        self.mirro(root.left)
+        self.mirro(root.right)
+        root.left=root.right
+        root.right=a  
     
+    def hieght(self,root):
+        if root==None:
+            return 0
+        
+        x=self.hieght(root.left)
+        y=self.hieght(root.right)
+        
+        return max(x+1,y+1)
+                
+    def copy(self,root,copy1):
+        if root==None:
+            return None
+        a=root.left.data
+        b=root.right.data
+        self.copy(root.left,copy1.left)
+        self.copy(root.right,copy1.right)
+        copy1.left=Node(a)
+        copy1.right=Node(b)   
+        return copy1
     
     
 tree=BST()
@@ -174,3 +200,9 @@ print()
 
 tree.preorder()
 print()
+print(tree.hieght(tree.root))
+tree.mirro(tree.root)
+tree.preorder()
+b=Node(1)
+a=tree.copy(tree.root,b)
+print(a.data)
