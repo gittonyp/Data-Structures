@@ -161,24 +161,45 @@ class BST:
         
         return max(x+1,y+1)
                 
-    def copy(self,root,copy1):
-        if root==None:
-            return None
-        a=root.left.data
-        b=root.right.data
-        a=Node(a)
-        b=Node(b)
-        copy1.left=a
-        copy1.right=b
-        self.copy(root.left,copy1.left)
-        self.copy(root.right,copy1.right)
-        return copy1
+    # def copy(self,root,copy1):
+    #     if root==None:
+    #         return None
+    #     a=root.left.data
+    #     b=root.right.data
+    #     a=Node(a)
+    #     b=Node(b)
+    #     copy1.left=a
+    #     copy1.right=b
+    #     self.copy(root.left,copy1.left)
+    #     self.copy(root.right,copy1.right)
+    #     return copy1
     
-    def selfcopy(self,root):
-        copy1=root.data
-        copy1=Node(copy1)
-        return self.copy(root,copy1)
+    # def selfcopy(self,root):
+    #     copy1=root.data
+    #     copy1=Node(copy1)
+    #     return self.copy(root,copy1)
         
+    def displaychild(self,root):
+        if root==None:
+            return
+        
+        print(f"Parent {root.data} ",end="")
+        if root.left!=None:
+            print(f"child {root.left.data} ",end="")
+        if root.right!=None:
+            print(f"child {root.right.data} ",end="")
+        print()
+        self.displaychild(root.left)
+        self.displaychild(root.right)
+    
+    def displayleft(self,root):
+        if root==None:
+            return
+        
+        if root.left!=None:
+            print(f"child {root.left.data}")
+        self.displaychild(root.left)
+        self.displaychild(root.right)
     
 tree=BST()
 tree.insert(10)
@@ -208,8 +229,6 @@ print()
 tree.preorder()
 print()
 print(tree.hieght(tree.root))
-tree.mirro(tree.root)
+# tree.mirro(tree.root)
 tree.preorder()
-b=Node(1)
-a=tree.selfcopy(tree.root)
-tree.__proorderin(a)
+tree.displaychild(tree.root)
